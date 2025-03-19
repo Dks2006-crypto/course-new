@@ -7,12 +7,14 @@ use App\Filament\Resources\CoursesResource\RelationManagers;
 use App\Models\Courses;
 use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
@@ -52,6 +54,10 @@ class CoursesResource extends Resource
                     ->integer()
                     ->placeholder(8-15)
                     ->required(),
+                FileUpload::make('image')
+                    ->image()
+                    ->label('изображение курса')
+                    ->directory('images/'),
                 Fieldset::make('Опции')->schema([
                     Toggle::make('is_active')
                         ->default(true)
@@ -77,6 +83,11 @@ class CoursesResource extends Resource
                 TextColumn::make('name')
                      ->searchable()
                      ->label('Название курса'),
+                ImageColumn::make('image')
+                    ->label('Изображение')
+                    ->size(50)
+                    ->circular()
+                    ->square(),
                  ToggleColumn::make('is_active')
                      ->label('Активный курс'),
                  ToggleColumn::make('is_promo')

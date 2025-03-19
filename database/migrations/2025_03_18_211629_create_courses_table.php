@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text ('description');
             $table->string('price');
             $table->string('time');
+            $table->string('image');
             $table->boolean('is_active');
             $table->boolean('is_promo');
             $table->boolean('is_new');

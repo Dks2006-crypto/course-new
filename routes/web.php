@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('layouts.base');
-})->name('main');
+Route::controller(BaseController::class)->group(function() {
+    Route::get('/', 'index')->name('main');
+    Route::get('/', 'courses')->name('main');
+});
