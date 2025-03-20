@@ -8,7 +8,10 @@ use App\Models\Courses;
 use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Filters\Filter;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -37,43 +40,57 @@ class CoursesResource extends Resource
     {
         return $form
         ->schema([
-            Section::make('Курсы')->schema([
-                TextInput::make('name')
-                    ->label('Название курса')
-                    ->maxLength(255)
-                    ->required(),
-                TextInput::make('description')
-                    ->label('Описание курса')
-                    ->required(),
-                TextInput::make('price')
-                    ->label('Стоимость курса')
-                    ->integer()
-                    ->required(),
-                TextInput::make('time')
-                    ->label('Время прохождения')
-                    ->integer()
-                    ->placeholder(8-15)
-                    ->required(),
-                FileUpload::make('image')
-                    ->image()
-                    ->label('изображение курса')
-                    ->directory('images/'),
-                Fieldset::make('Опции')->schema([
+            Group::make()->schema([
+                Section::make('Курсы')->schema([
+                    TextInput::make('name')
+                        ->label('Название курса')
+                        ->maxLength(255)
+                        ->required(),
+                    TextInput::make('description')
+                        ->label('Описание курса')
+                        ->required(),
+                    TextInput::make('price')
+                        ->label('Стоимость курса')
+                        ->integer()
+                        ->required(),
+                    TextInput::make('time')
+                        ->label('Время прохождения')
+                        ->integer()
+                        ->placeholder(8-15)
+                        ->required(),
+                ])->columns(2)->columnSpanFull(),
+                Section::make()->schema([
+                    FileUpload::make('image')
+                        ->image()
+                        ->label('изображение курса')
+                        ->directory('images/'),
+                ])->columnSpanFull(),
+            ])->columnSpan(2),
+            Group::make()->schema([
+                Section::make()->schema([
+                    Select::make('brand_id')
+                        ->required()
+                        ->preload()
+                        ->searchable()
+                        ->label('Категория')
+                        ->relationship('brand', 'name')
+                ]),
+                Section::make()->schema([
                     Toggle::make('is_active')
                         ->default(true)
                         ->label('Активный курс'),
+                    Toggle::make('is_new')
+                        ->default(true)
+                        ->label('Новый курс'),
                     Toggle::make('is_promo')
                         ->default(false)
                         ->label('курс по акции'),
-                    Toggle::make('is_new')
-                        ->default(false)
-                        ->label('Новый курс'),
                     Toggle::make('is_popular')
                         ->default(false)
                         ->label('Популярный курс'),
-                ])
-            ]),
-        ]);
+                ]),
+            ])->columnSpan(1),
+        ])->columns(3);
     }
 
     public static function table(Table $table): Table
@@ -98,7 +115,9 @@ class CoursesResource extends Resource
                      ->label('Популярный курс'),
             ])
             ->filters([
-                //
+                Filter::make('is_active')
+                    ->label('Актывные курсы')
+                    ->query(fn (Builder $query): Builder => $query->where('is_active', true)),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
