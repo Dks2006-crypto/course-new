@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
 </head>
@@ -26,36 +27,12 @@
 
     @include('components.partials.header')
     @include('web.sections.intro.index')
-    @include('web.sections.list.index')
     @include('web.sections.rewievs.index')
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper('.mySwiper', {
-            slidesPerView: 1,
-            spaceBetween: 60,
-            loop: true,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
-                },
-                824: {
-                    spaceBetween:60,
-                    slidesPerView: 2,
-                },
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 30,
-                },
+    @include('layouts.all')
 
-            }
-        });
-    </script>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 </html>

@@ -18,7 +18,7 @@
         <!-- Desktop Navigation (Hidden on smaller screens) -->
         <nav class="hidden md:block">
             <ul class="flex space-x-8">
-                <li><a href="{{ route('main')}}" class="hover:text-primary transition-colors duration-300">Главная</a></li>
+                <li><a href="" class="hover:text-primary transition-colors duration-300">Главная</a></li>
                 <li><a href="#" class="hover:text-primary transition-colors duration-300">Чему вы научитесь</a></li>
                 <li class="group relative">
                     <a href="#" class="hover:text-primary transition-colors duration-300">Плюсы</a>
