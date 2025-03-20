@@ -1,40 +1,39 @@
-<section class="w-full h-full pt-[70px]">
+<section class="w-full h-full pt-[60px]">
     <x-container>
-        <section class="w-full h-full pt-[120px]">
-            <x-container>
-                <h1 class="h1 text-center text-[38px] font-extrabold mb-[30px]">Наши курсы</h1>
+        <h1 class="h1 text-center text-[38px] font-extrabold mb-[30px]">Наши курсы</h1>
 
-                <!-- Категории -->
-                <div class="categories flex justify-center mb-[20px]" id="categories">
-                    <ul class="categories-list flex gap-[10px]">
-                        @foreach ($brands as $brand)
-                        <li class="inline-flex py-2 px-3 hover:bg-slate-200 rounded">
-                            <button class="category-link" data-id="{{ $brand->id }}">
-                                {{ $brand->name }}
-                            </button>
-                        </li>
-                        @endforeach
-                        <li>
-                            <button class="category-all inline-flex py-2 px-3 hover:bg-slate-200 rounded" data-id="all">
-                                Все курсы
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+        <!-- Категории -->
+        <div class="categories flex justify-center mb-[20px]" id="categories">
+            <ul class="categories-list flex gap-[10px]">
+                @foreach ($brands as $brand)
+                <li class="inline-flex py-2 px-3 hover:bg-slate-200 rounded">
+                    <button class="category-link" data-id="{{ $brand->id }}">
+                        {{ $brand->name }}
+                    </button>
+                </li>
+                @endforeach
+                <li>
+                    <button class="category-all inline-flex py-2 px-3 hover:bg-slate-200 rounded" data-id="all">
+                        Все курсы
+                    </button>
+                </li>
+            </ul>
+        </div>
 
-                <!-- Статьи -->
-                <div class="py-12">
-                    <div class="grid md:grid-cols-4 grid-cols-2 gap-5" id="articles">
-                        @foreach ($courses as $course)
+        <!-- Статьи -->
+        <div class="py-6">
+            <div class="md:grid xl:grid-cols-3 md:grid-cols-2 flex flex-col justify-center gap-5 items-center"
+                id="articles">
+                @foreach ($courses as $course)
 
-                        @endforeach
-                    </div>
-                </div>
-            </x-container>
-        </section>
+                @endforeach
+            </div>
+        </div>
+    </x-container>
+</section>
 
-        <script>
-            $(document).ready(function() {
+<script>
+    $(document).ready(function() {
             // Загружаем статьи по умолчанию (при загрузке страницы)
             loadArticles();
 
@@ -63,5 +62,4 @@
                 });
             }
         });
-        </script>
-@endif
+</script>

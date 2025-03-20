@@ -32,7 +32,7 @@
     </x-container>
 </section> --}}
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <section class="w-full h-full pt-[70px]">
     <x-container>
         <section class="w-full h-full pt-[120px]">
@@ -97,4 +97,4 @@
             }
         });
         </script>
-@endif
+@endif --}}

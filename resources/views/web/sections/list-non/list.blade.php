@@ -1,4 +1,4 @@
-<section class="w-full h-full pt-[70px]">
+{{-- <section class="w-full h-full pt-[70px]">
     <x-container>
         <section class="w-full h-full pt-[120px]">
             <x-container>
@@ -62,4 +62,4 @@
             }
         });
         </script>
-@endif
+@endif --}}
