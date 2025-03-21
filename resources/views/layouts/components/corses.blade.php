@@ -8,8 +8,8 @@
             class=" relative max-w-sm px-9 pb-9 text-black flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100">
             <div class="flex flex-col pt-3">
                 <div class="flex items-center justify-around py-1 px-1 border rounded-xl">
-                    @if ($course->is_promo === 1)
-                        <span class="p-1 lg:text-[18px] sm:text-[16px] text-[14px] text-red-500">Скидка 15%</span>
+                    @if ($course->discount > 0)
+                        <span class="p-1 lg:text-[18px] sm:text-[16px] text-[14px] text-red-500">Скидка {{$course->discount}}%</span>
                     @endif
                     @if (($course->is_new === 1))
                         <span class="p-1 lg:text-[18px] sm:text-[16px] text-[14px] text-blue-700 rounded-full">Новый</span>
@@ -39,6 +39,10 @@
                 @endif
                 <span class="px-3 py-0.5 border rounded-full">{{$course->time}} часов</span>
             </div>
+            <form action="{{ route('cart.add', $course) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+            </form>
         </a>
     </div>
 </div>

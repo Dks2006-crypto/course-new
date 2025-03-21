@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CoursesResource\Pages;
 use App\Filament\Resources\CoursesResource\RelationManagers;
-use App\Models\Courses;
+use App\Models\Course;
 use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CoursesResource extends Resource
 {
-    protected static ?string $model = Courses::class;
+    protected static ?string $model = Course::class;
 
     protected static ?string $modelLabel = "Курс";
 
@@ -57,6 +57,11 @@ class CoursesResource extends Resource
                         ->label('Время прохождения')
                         ->integer()
                         ->placeholder(8-15)
+                        ->required(),
+                    TextInput::make('discount')
+                        ->label('Процент скидки')
+                        ->integer()
+                        ->placeholder(5)
                         ->required(),
                 ])->columns(2)->columnSpanFull(),
                 Section::make()->schema([

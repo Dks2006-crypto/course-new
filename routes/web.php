@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\ReviewController;
@@ -24,7 +25,14 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function() {
     Route::get('/', [BaseController::class, 'index'])->name('reviews.index');
     Route::post('/', [BaseController::class, 'store'])->name('reviews.store');
-    Route::delete('/{review}', [BaseController::class, 'destroy'])->name('reviws.destroy');
+    Route::delete('/{review}', [BaseController::class, 'destroy'])->name('reviews.destroy');
+});
+
+Route::middleware('auth')->group(function() {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/add/{course}', [CartController::class, 'add'])->name('cart.add');
+    Route::delete('/cart/remove/{cart}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::patch('/cart/update/{cart}', [CartController::class, 'update'])->name('cart.update');
 });
 
 require __DIR__.'/auth.php';

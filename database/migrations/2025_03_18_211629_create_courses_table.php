@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text ('description');
-            $table->string('price');
+            $table->text('description');
+            $table->decimal('price', 8, 2);
+            $table->decimal('discount', 5, 2)->default(0); // Скидка
             $table->foreignId('brand_id')->constrained('brands')->cascadeOnDelete();
             $table->string('time');
             $table->string('image');

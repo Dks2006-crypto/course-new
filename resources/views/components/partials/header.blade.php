@@ -41,6 +41,7 @@
                             @endif
                         @endauth
                     @endif
+                    <a href="{{ route('cart.index') }}">Корзина</a>
                 </li>
             </ul>
         </nav>

@@ -27,7 +27,7 @@
                         <p class="mt-8">{{ $review->content }}</p>
 
                         @can('delete', $review)
-                        <form action="{{ route('reviws.destroy', $review) }}" method="POST" class="mx-auto">
+                        <form action="{{ route('reviews.destroy', $review) }}" method="POST" class="mx-auto">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="py-2 px-7 rounded-full bg-red-950 text-white">Удалить</button>
@@ -39,7 +39,7 @@
             </div>
 
             @auth
-            <div class="mt-8">
+            <div class="mt-4">
                 <form class="max-w-sm mx-auto" action="{{ route('reviews.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -47,13 +47,13 @@
                             class="form-control block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Напишите ваш отзыв"></textarea>
                     </div>
-                    <div class="form-group mt-4">
+                    <div class="form-group mt-2">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             for="photo">Загрузите фото</label>
                         <input type="file" name="photo" id="photo"
                             class="form-control block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
                     </div>
-                    <button type="submit" class="mt-4 py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Отправить</button>
+                    <button type="submit" class="mt-2 py-2 px-4 mx-auto bg-blue-500 text-white rounded-lg hover:bg-blue-600">Отправить</button>
                 </form>
             </div>
             @endauth

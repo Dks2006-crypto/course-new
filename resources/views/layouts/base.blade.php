@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 
 <body class="bg-[url('unsplash.jpg')] bg-cover" x-data="{ openMenu : false }"
@@ -27,7 +27,6 @@
 
     @include('components.partials.header')
     @include('web.sections.intro.index')
-    {{-- @include('web.sections.reviews.index') --}}
     @include('layouts.all')
     @include('reviews.index')
 </body>

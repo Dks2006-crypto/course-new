@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
-use App\Models\courses;
+use App\Models\Course;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +19,7 @@ class BaseController extends Controller
     {
         $brands = Brand::all();
 
-        $courses = courses::all();
+        $courses = Course::all();
 
         $reviews = Review::with('user')->latest()->get();
 
@@ -33,7 +33,7 @@ class BaseController extends Controller
     }
     public function getCoursesByCategory($brandId, Request $request)
     {
-        $courses = courses::where('brand_id', $brandId)->get();
+        $courses = Course::where('brand_id', $brandId)->get();
 
         if ($request->ajax()){
             return response()->json([

@@ -6,10 +6,10 @@ use Livewire\Component;
 
 class CoursesList extends Component
 {
-    public $courses;
-    public function mount($courses)
+    public $course;
+    public function mount($course)
     {
-        $this->courses = $courses;
+        $this->course = $course;
     }
     public function render()
     {
