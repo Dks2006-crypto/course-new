@@ -48,12 +48,19 @@ class BaseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'content' => 'required|string|max:1000'
+            'content' => 'required|string|max:1000',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        $photoPath = null;
+            if ($request->hasFile('photo')) {
+        $photoPath = $request->file('photo')->store('reviews', 'public');
+    }
 
         Review::create([
             'content' => $request->content,
             'user_id' => Auth::id(),
+            'photo' => $photoPath,
         ]);
 
         return redirect()->route('reviews.index');
