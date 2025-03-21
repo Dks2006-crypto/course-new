@@ -30,9 +30,18 @@
                         <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Service 3</a></li>
                     </ul>
                 </li>
-                <li><a href="#"
-                        class="bg-primary hover:bg-secondary text-blue-400 px-4 py-2 rounded-md transition-colors duration-300">Get
-                        Started</a></li>
+                <li>
+                    @if (Route::has('login'))
+                        @auth
+                                <a href="{{url('/dashboard')}}">Личный кабинет</a>
+                            @else
+                                <a href="{{route('login')}}">Войти</a>
+                            @if (Route::has('register'))
+                                <a href="{{route('register')}}">Зарегаться</a>
+                            @endif
+                        @endauth
+                    @endif
+                </li>
             </ul>
         </nav>
     </div>
@@ -52,9 +61,18 @@
                     <li><a href="#" class="block py-2 hover:text-primary">Service 3</a></li>
                 </ul>
             </li>
-            <li><a href="#"
-                    class="block py-2 bg-primary hover:bg-secondary text-blue-400 rounded-md transition-colors duration-300">Get
-                    Started</a></li>
+            <li>
+                @if (Route::has('login'))
+                    @auth
+                            <a href="{{url('/dashboard')}}">Личный кабинет</a>
+                        @else
+                            <a href="{{route('login')}}">Войти</a>
+                        @if (Route::has('register'))
+                            <a href="{{route('register')}}">Зарегаться</a>
+                        @endif
+                    @endauth
+                @endif
+            </li>
         </ul>
     </nav>
 </header>

@@ -1,15 +1,15 @@
 @foreach ($courses as $course)
 @php
-    $skidka = $course->price * 0.15
+    $skidka = $course->price - ($course->price * 0.15)
 @endphp
 <div class="text-white">
     <div class="">
         <a href="#"
-            class=" relative max-w-sm px-9 pb-9 text-black flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-400 dark:border-gray-600 dark:hover:bg-gray-600">
+            class=" relative max-w-sm px-9 pb-9 text-black flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100">
             <div class="flex flex-col pt-3">
                 <div class="flex items-center justify-around py-1 px-1 border rounded-xl">
                     @if ($course->is_promo === 1)
-                    <span class="p-1 lg:text-[18px] sm:text-[16px] text-[14px] text-red-500">Скидка 15%</span>
+                        <span class="p-1 lg:text-[18px] sm:text-[16px] text-[14px] text-red-500">Скидка 15%</span>
                     @endif
                     @if (($course->is_new === 1))
                         <span class="p-1 lg:text-[18px] sm:text-[16px] text-[14px] text-blue-700 rounded-full">Новый</span>
@@ -20,13 +20,13 @@
                 </div>
                 <div class="flex items-center justify-between pt-1">
                     <div class="">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
                             {{$course->name}}</h5>
                     </div>
                     <img src="{{ url ('storage', $course->image) }}" class="size-10" alt="">
                 </div>
             </div>
-            <p class="font-normal text-gray-700 dark:text-black py-4">{{Str::limit($course->description, 23, ('...'))}}</p>
+            <p class="font-normal text-gray-700 py-4">{{Str::limit($course->description, 23, ('...'))}}</p>
             <div class="flex justify-between items-center">
                 @if ($course->is_promo === 1)
                     <div class="">

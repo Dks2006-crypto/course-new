@@ -27,9 +27,9 @@
 
     @include('components.partials.header')
     @include('web.sections.intro.index')
-    @include('web.sections.rewievs.index')
+    {{-- @include('web.sections.reviews.index') --}}
     @include('layouts.all')
-
+    @include('reviews.index')
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
