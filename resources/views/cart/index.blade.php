@@ -62,7 +62,10 @@
         </div>
 
         <div class="text-right mt-4">
-            <a href="" class="btn btn-primary btn-lg">Оформить заказ</a>
+            <form action="{{ route('orders.store') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-primary btn-lg">Оформить заказ</button>
+            </form>
         </div>
     @endif
 </div>

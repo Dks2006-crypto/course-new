@@ -87,9 +87,6 @@ class CoursesResource extends Resource
                     Toggle::make('is_new')
                         ->default(true)
                         ->label('Новый курс'),
-                    Toggle::make('is_promo')
-                        ->default(false)
-                        ->label('курс по акции'),
                     Toggle::make('is_popular')
                         ->default(false)
                         ->label('Популярный курс'),

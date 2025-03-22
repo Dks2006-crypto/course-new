@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BaseController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,10 @@ Route::middleware('auth')->group(function() {
     Route::post('/cart/add/{course}', [CartController::class, 'add'])->name('cart.add');
     Route::delete('/cart/remove/{cart}', [CartController::class, 'remove'])->name('cart.remove');
     Route::patch('/cart/update/{cart}', [CartController::class, 'update'])->name('cart.update');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
 });
 
 require __DIR__.'/auth.php';
