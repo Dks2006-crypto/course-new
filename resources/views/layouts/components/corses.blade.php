@@ -1,6 +1,6 @@
 @foreach ($courses as $course)
 @php
-    $skidka = $course->price - ($course->price * 0.15)
+    $skidka = $course->price - ($course->price * ($course->discount / 100))
 @endphp
 <div class="text-white">
     <div class="">
@@ -28,11 +28,11 @@
             </div>
             <p class="font-normal text-gray-700 py-4">{{Str::limit($course->description, 23, ('...'))}}</p>
             <div class="flex justify-between items-center">
-                @if ($course->is_promo === 1)
+                @if ($course->discount > 0)
                     <div class="">
                         <span class="px-3 py-1.5 line-through">{{$course->price}} ₽</span>
                         <br>
-                        <span class="px-3 py-1.5 text-2xl text-amber-200">/{{$skidka}} ₽</span>
+                        <span class="px-3 py-1.5 text-2xl text-amber-600">/{{$skidka}} ₽</span>
                     </div>
                 @else
                     <span class="px-3 py-1.5">{{$course->price}} ₽</span>

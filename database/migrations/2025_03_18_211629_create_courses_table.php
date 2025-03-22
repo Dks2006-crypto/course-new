@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('time');
             $table->string('image');
             $table->boolean('is_active');
-            $table->boolean('is_promo');
             $table->boolean('is_new');
             $table->boolean('is_popular');
             $table->timestamps();

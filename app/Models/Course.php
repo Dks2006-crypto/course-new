@@ -20,7 +20,6 @@ class Course  extends Model
         'brand_id',
         'image',
         'is_active',
-        'is_promo',
         'is_new',
         'is_popular'
     ];

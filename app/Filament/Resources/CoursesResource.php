@@ -112,8 +112,6 @@ class CoursesResource extends Resource
                     ->square(),
                  ToggleColumn::make('is_active')
                      ->label('Активный курс'),
-                 ToggleColumn::make('is_promo')
-                     ->label('Акция'),
                  ToggleColumn::make('is_new')
                      ->label('Новый курс'),
                  ToggleColumn::make('is_popular')
