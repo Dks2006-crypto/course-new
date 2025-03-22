@@ -62,6 +62,7 @@ class CoursesResource extends Resource
                         ->label('Процент скидки')
                         ->integer()
                         ->placeholder(5)
+                        ->min(0)
                         ->required(),
                 ])->columns(2)->columnSpanFull(),
                 Section::make()->schema([

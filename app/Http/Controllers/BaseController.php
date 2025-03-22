@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Course;
 use App\Models\Review;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,6 +18,8 @@ use Illuminate\Support\Facades\Auth;
 
 class BaseController extends Controller
 {
+
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function index(Request $request)
     {
         $brands = Brand::all();

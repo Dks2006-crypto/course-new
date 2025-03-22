@@ -51,7 +51,7 @@
     <nav id="mobile-menu"
         class="hidden md:hidden bg-gray-50 border-t border-gray-200 transition-height duration-300 ease-in-out">
         <ul class="px-4 py-2">
-            <li><a href="#" class="block py-2 hover:text-primary">Главная</a></li>
+            <li><a href="{{route('reviews.index')}}" class="block py-2 hover:text-primary">Главная</a></li>
             <li><a href="#" class="block py-2 hover:text-primary">Чему вы научитесь</a></li>
             <li>
                 <a href="#" id="services-dropdown-toggle" class="block py-2 hover:text-primary">Плюсы</a>

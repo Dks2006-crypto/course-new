@@ -1,3 +1,16 @@
+<style>
+    .input-group {
+        display: flex;
+        align-items: center;
+    }
+    .input-group .form-control {
+        margin: 0 5px;
+    }
+    .input-group .btn {
+        padding: 0.25rem 0.5rem;
+    }
+</style>
+
 @extends('layouts.app')
 
 @section('content')
@@ -36,7 +49,11 @@
                                 <form action="{{ route('cart.update', $item) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('PATCH')
-                                    <input type="number" name="quantity" value="{{ $item->quantity }}" min="1" class="form-control form-control-sm" style="width: 70px;">
+                                    <div class="input-group" style="width: 130px;">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm minus-btn">-</button>
+                                        <input type="number" name="quantity" value="{{ $item->quantity }}" min="1" class="form-control form-control-sm text-center" style="width: 50px;">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm plus-btn">+</button>
+                                    </div>
                                     <button type="submit" class="btn btn-sm btn-outline-secondary mt-1">Обновить</button>
                                 </form>
                             </td>
@@ -52,6 +69,7 @@
                                 </form>
                             </td>
                         </tr>
+
                     @endforeach
                 </tbody>
             </table>
@@ -70,3 +88,26 @@
     @endif
 </div>
 @endsection
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Обработка кнопки "плюс"
+        document.querySelectorAll('.plus-btn').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const input = this.closest('.input-group').querySelector('input[name="quantity"]');
+                input.value = parseInt(input.value) + 1;
+            });
+        });
+
+        // Обработка кнопки "минус"
+        document.querySelectorAll('.minus-btn').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const input = this.closest('.input-group').querySelector('input[name="quantity"]');
+                if (parseInt(input.value) > 1) {
+                    input.value = parseInt(input.value) - 1;
+                }
+            });
+        });
+    });
+</script>

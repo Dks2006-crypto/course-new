@@ -6,19 +6,42 @@
         <div class="categories flex justify-center mb-[20px]" id="categories">
             <ul class="categories-list flex gap-[10px]">
                 @foreach ($brands as $brand)
-                <li class="inline-flex py-2 px-3 hover:bg-slate-200 rounded">
-                    <button class="category-link" data-id="{{ $brand->id }}">
-                        {{ $brand->name }}
+                <li class="inline-flex hover:bg-slate-200 rounded">
+                    <button data-id="{{ $brand->id }}"
+                        class='category-link group relative z-10 h-12 w-32 cursor-pointer overflow-hidden rounded-md border-none bg-black p-2 text-xl font-bold text-white'>
+                        Courses
+                        <span
+                            class='absolute -left-2 -top-8 h-32 w-36 origin-right rotate-12 scale-x-0 transform bg-sky-200 transition-transform duration-1000 group-hover:scale-x-100 group-hover:duration-500'></span>
+                        <span
+                            class='absolute -left-2 -top-8 h-32 w-36 origin-right rotate-12 scale-x-0 transform bg-sky-400 transition-transform duration-700 group-hover:scale-x-100 group-hover:duration-700'></span>
+                        <span
+                            class='absolute -left-2 -top-8 h-32 w-36 origin-right rotate-12 scale-x-0 transform bg-sky-600 transition-transform duration-500 group-hover:scale-x-100 group-hover:duration-1000'></span>
+                        <span
+                            class='absolute left-1 top-2.5 z-10 opacity-0 duration-100 group-hover:opacity-100 group-hover:duration-1000'>
+                            {{ $brand->name }}
+                        </span>
                     </button>
                 </li>
                 @endforeach
                 <li>
-                    <button class="category-all inline-flex py-2 px-3 hover:bg-slate-200 rounded" data-id="all">
-                        Все курсы
+                    <button data-id="all"
+                        class='group relative z-10 h-12 w-32 cursor-pointer overflow-hidden rounded-md border-none bg-black p-2 text-xl font-bold text-white'>
+                        Courses
+                        <span
+                            class='absolute -left-2 -top-8 h-32 w-36 origin-right rotate-12 scale-x-0 transform bg-sky-200 transition-transform duration-1000 group-hover:scale-x-100 group-hover:duration-500'></span>
+                        <span
+                            class='absolute -left-2 -top-8 h-32 w-36 origin-right rotate-12 scale-x-0 transform bg-sky-400 transition-transform duration-700 group-hover:scale-x-100 group-hover:duration-700'></span>
+                        <span
+                            class='absolute -left-2 -top-8 h-32 w-36 origin-right rotate-12 scale-x-0 transform bg-sky-600 transition-transform duration-500 group-hover:scale-x-100 group-hover:duration-1000'></span>
+                        <span
+                            class='absolute left-1 top-2.5 z-10 opacity-0 duration-100 group-hover:opacity-100 group-hover:duration-1000'>
+                            Все курсы
+                        </span>
                     </button>
                 </li>
             </ul>
         </div>
+
 
         <!-- Статьи -->
         <div class="py-6">
