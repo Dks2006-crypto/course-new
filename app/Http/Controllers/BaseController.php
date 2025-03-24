@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Course;
 use App\Models\Review;
+use App\Models\Setting;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -28,13 +29,24 @@ class BaseController extends Controller
 
         $reviews = Review::with('user')->latest()->get();
 
+        $setting = Setting::latest()->first();
+
+        $data = [
+            'name' => $setting->name,
+            'description' => $setting->description,
+            'logo' => $setting->logo,
+            'meta_title' => $setting->meta_title,
+            'meta_description' => $setting->meta_description,
+            'meta_keywords' => $setting->meta_keywords,
+        ];
+
         if ($request->ajax()) {
             return response()->json([
                 'courses' => view('layouts.components.corses', compact('courses'))->render(),
             ]);
         }
 
-        return view('layouts.base', compact('brands', 'courses', 'reviews'));
+        return view('layouts.base', compact('brands', 'courses', 'reviews', 'setting'));
     }
     public function getCoursesByCategory($brandId, Request $request)
     {

@@ -5,7 +5,7 @@
 <div class="text-white">
     <div class="">
         <a href="#"
-            class=" relative max-w-sm px-9 pb-9 text-black flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100">
+            class=" relative max-w-sm px-9 pb-2 text-black flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100">
             <div class="flex flex-col pt-3">
                 <div class="flex items-center justify-around py-1 px-1 border rounded-xl">
                     @if ($course->discount > 0)
@@ -39,9 +39,9 @@
                 @endif
                 <span class="px-3 py-0.5 border rounded-full">{{$course->time}} часов</span>
             </div>
-            <form action="{{ route('cart.add', $course) }}" method="POST">
+            <form class="pt-3 flex items-center justify-center" action="{{ route('cart.add', $course) }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+                <button type="submit" class="btn btn-primary my-auto px-6 py-2 cursor-pointer bg-blue-700 rounded-full text-white">Добавить в корзину</button>
             </form>
         </a>
     </div>
