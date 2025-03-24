@@ -14,7 +14,6 @@
                         <div class="relative h-100  overflow-hidden rounded-lg md:h-108">
                             <!-- Item 1 -->
                             <div class="hidden duration-700 ease-in-out rounded-2xl px-3 bg-white" data-carousel-item="active">
-                                <p class=" text-black text-xl">Мой друг, запомни, что с тобой я только телом. Не отвлекай меня!</p>
                                 <img src="{{ asset('storage/images/ooo.png')}}"
                                     class="absolute block rounded-xl -translate-x-1/2 -translate-y-1/2 top-[55%] left-1/2"
                                     alt="...">

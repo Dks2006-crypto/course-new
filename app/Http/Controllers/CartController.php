@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Course;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,8 @@ class CartController extends Controller
         // Загружаем корзину с курсами
         $cartItems = Auth::user()->cart()->with('course')->get();
 
+        $setting = Setting::latest()->first();
+
         $totalPrice = $cartItems->sum(function ($item) {
             $price = $item->course->price;
             $discount = $item->course->discount; // Скидка в процентах
@@ -24,7 +27,7 @@ class CartController extends Controller
             return $discountedPrice * $item->quantity;
         });
 
-        return view('cart.index', compact('cartItems', 'totalPrice'));
+        return view('cart.index', compact('cartItems', 'totalPrice', 'setting'));
     }
 
     public function add(Course $course)

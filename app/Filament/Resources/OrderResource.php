@@ -22,6 +22,12 @@ class OrderResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationGroup = 'Управление заказами';
 
+    protected static ?string $modelLabel = "Заказ";
+
+    protected static ?string $pluralModelLabel = "Заказы";
+
+    protected static ?string $navigationLabel = 'Заказы';
+
     public static function form(Form $form): Form
     {
         return $form

@@ -56,13 +56,13 @@ class CoursesResource extends Resource
                     TextInput::make('time')
                         ->label('Время прохождения')
                         ->integer()
-                        ->placeholder(8-15)
+                        ->placeholder(5)
                         ->required(),
                     TextInput::make('discount')
                         ->label('Процент скидки')
-                        ->integer()
+                        ->numeric()
                         ->placeholder(5)
-                        ->min(0)
+                        ->minValue(0)
                         ->required(),
                 ])->columns(2)->columnSpanFull(),
                 Section::make()->schema([

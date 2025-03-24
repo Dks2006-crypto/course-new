@@ -2,7 +2,7 @@
     <div class="container mx-auto flex items-center justify-between px-4">
         <!-- Logo -->
         <a href="#" class="flex items-center text-primary gap-2 hover:text-secondary">
-            <img src="{{asset ('storage/settings/01JQ439RKXTH4C7SR14CHDQS5Z.png')}}" alt="Лого сайта" class="size-8 rounded">
+            <img src="{{asset ('storage/settings/01JQ48RS53CXD0G6XHZPHJMQNR.png')}}" alt="Лого сайта" class="size-8 rounded">
             <span class="text-2xl font-bold">{{$setting->name}}</span>
         </a>
 

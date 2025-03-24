@@ -27,6 +27,12 @@ class SettingsResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $modelLabel = "Настройка";
+
+    protected static ?string $pluralModelLabel = "Настройки";
+
+    protected static ?string $navigationLabel = 'Настройки';
+
 
     public static function canCreate(): bool
     {
