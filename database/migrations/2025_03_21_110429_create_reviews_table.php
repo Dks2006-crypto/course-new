@@ -16,6 +16,7 @@ return new class extends Migration
             $table->text('content');
             $table->unsignedBigInteger('user_id')->after('id');
             $table->string('photo')->nullable();
+            $table->boolean('is_verified')->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -27,7 +27,7 @@ class BaseController extends Controller
 
         $courses = Course::all();
 
-        $reviews = Review::with('user')->latest()->get();
+        $reviews =  Review::with('user')->where('is_verified', true)->latest()->get();
 
         $setting = Setting::latest()->first();
 
@@ -78,6 +78,7 @@ class BaseController extends Controller
             'content' => $request->content,
             'user_id' => Auth::id(),
             'photo' => $photoPath,
+            'is_verified'=> false,
         ]);
 
         return redirect()->route('reviews.index');

@@ -20,7 +20,6 @@ class OrderResource extends Resource
 
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Управление заказами';
 
     protected static ?string $modelLabel = "Заказ";
 

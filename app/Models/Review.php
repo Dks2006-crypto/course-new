@@ -12,10 +12,16 @@ class Review extends Model
         'content',
         'user_id',
         'photo',
+        'is_verified',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeVerified($query)
+    {
+        return $query->where('is_verified', true);
     }
 }

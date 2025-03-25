@@ -9,7 +9,7 @@
 
             <!-- Используем CSS Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                @foreach ($reviews as $review)
+                @foreach ($reviews->where('is_verified', true) as $review)
                 <div class="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white shadow-2xl shadow-gray-600/10 h-full">
                     <div class="flex flex-col gap-4">
                         <div class="flex items-center justify-between">
@@ -40,6 +40,11 @@
 
             @auth
             <div class="mt-4">
+                @if(session('success'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <form class="max-w-sm mx-auto" action="{{ route('reviews.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
