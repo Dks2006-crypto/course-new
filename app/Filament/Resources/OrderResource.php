@@ -6,10 +6,15 @@ use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Models\Order;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -31,7 +36,10 @@ class OrderResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Section::make('Статаус')->schema([
+                    Toggle::make('is_approve')
+                        ->label('Одобрено'),
+                ]),
             ]);
     }
 
@@ -39,15 +47,30 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->sortable(),
-                TextColumn::make('user.name')->label('Пользователь'),
-                TextColumn::make('course.name')->label('Курс'),
-                TextColumn::make('total_price')->label('Стоимость')->money('rub'),
-                TextColumn::make('status')->label('Статус'),
-                TextColumn::make('created_at')->label('Время создания')->dateTime(),
+                TextColumn::make('id')
+                    ->sortable(),
+                TextColumn::make('user.name')
+                    ->label('Пользователь'),
+                TextColumn::make('user.email')
+                    ->label('Почта'),
+                IconColumn::make('is_approve')
+                    ->label('Статус')
+                    ->boolean()
+                    ->sortable(),
+                TextColumn::make('course.name')
+                    ->label('Курс'),
+                TextColumn::make('total_price')
+                    ->label('Стоимость')->money('rub'),
+                TextColumn::make('created_at')
+                    ->label('Время создания')->dateTime(),
             ])
             ->filters([
-                //
+                SelectFilter::make('is_approve')
+                    ->label('статус ')
+                    ->options([
+                        '1' => 'Одобренные',
+                        '0' => 'На модерации',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

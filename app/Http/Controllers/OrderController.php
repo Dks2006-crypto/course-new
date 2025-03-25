@@ -21,6 +21,7 @@ class OrderController extends Controller
         foreach ($cartItems as $item){
             Order::create([
                 'user_id' => $user->id,
+                'user_email' => $user->email,
                 'course_id' => $item->course_id,
                 'total_price' => $item->course->price * $item->quantity,
                 'status' => 'Рассмотрение'

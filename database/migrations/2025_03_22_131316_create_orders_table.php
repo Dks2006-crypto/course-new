@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
+            $table->boolean('is_approve')->default(false);
             $table->decimal('total_price', 8, 2);
             $table->string('status')->default('Рассмотрение');
             $table->timestamps();

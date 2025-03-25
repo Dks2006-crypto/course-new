@@ -14,6 +14,7 @@ class Order extends Model
         'course_id',
         'total_price',
         'status',
+        'is_approve',
     ];
 
     public function user()

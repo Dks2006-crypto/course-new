@@ -19,22 +19,12 @@
         <!-- Desktop Navigation (Hidden on smaller screens) -->
         <nav class="hidden md:block">
             <ul class="flex space-x-8">
-                <li><a href="" class="hover:text-primary transition-colors duration-300">Главная</a></li>
-                <li><a href="#" class="hover:text-primary transition-colors duration-300">Чему вы научитесь</a></li>
-                <li class="group relative">
-                    <a href="#" class="hover:text-primary transition-colors duration-300">Плюсы</a>
-                    <!-- Dropdown Menu -->
-                    <ul
-                        class="absolute left-0 hidden group-hover:block bg-white shadow-md py-2 mt-1 rounded-md w-48 transition-all duration-300">
-                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Service 1</a></li>
-                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Service 2</a></li>
-                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Service 3</a></li>
-                    </ul>
-                </li>
+                <li><a href="{{url('/')}}" class="hover:text-primary  transition-colors text-black duration-300">Главная</a></li>
+                <li><a href="#" class="hover:text-primary transition-colors no-underline text-black duration-300">Чему вы научитесь</a></li>
                 <li>
                     @if (Route::has('login'))
                         @auth
-                                <a href="{{url('/dashboard')}}">Личный кабинет</a>
+                                <a href="{{url('/cart')}}">Личный кабинет</a>
                             @else
                                 <a href="{{route('login')}}">Войти</a>
                             @if (Route::has('register'))
@@ -42,7 +32,7 @@
                             @endif
                         @endauth
                     @endif
-                    <a href="{{ route('cart.index') }}">Корзина</a>
+                    <a href="{{ route('cart.index') }}" class="no-underline">Корзина</a>
                 </li>
             </ul>
         </nav>
